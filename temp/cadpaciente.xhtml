@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<h:head>
+	<script type="text/javascript">
+		PrimeFaces.locales['pt_BR'] = {
+			closeText : 'Fechar',
+			prevText : 'Anterior',
+			nextText : 'Próximo',
+			currentText : 'Começo',
+			monthNames : [ 'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio',
+					'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro',
+					'Novembro', 'Dezembro' ],
+			monthNamesShort : [ 'Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun',
+					'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez' ],
+			dayNames : [ 'Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta',
+					'Sexta', 'Sábado' ],
+			dayNamesShort : [ 'Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb' ],
+			dayNamesMin : [ 'D', 'S', 'T', 'Q', 'Q', 'S', 'S' ],
+			weekHeader : 'Semana',
+			firstDay : 1,
+			isRTL : false,
+			showMonthAfterYear : false,
+			yearSuffix : '',
+			timeOnlyTitle : 'Só Horas',
+			timeText : 'Tempo',
+			hourText : 'Hora',
+			minuteText : 'Minuto',
+			secondText : 'Segundo',
+			currentText : 'Data Atual',
+			ampm : false,
+			month : 'Mês',
+			week : 'Semana',
+			day : 'Dia',
+			allDayText : 'Todo Dia'
+		};
+	</script>
+	
+	</h:head>
+<h:body>
+<p:panel header="Cadastro de Paciente" footer="Desenvolvido por Elivan">
+<h:form>
+	<h:outputLabel value="Nome do Paciente:"></h:outputLabel><br/>
+	<p:inputText id="nome" value="#{pacBean.paciente.nome}"></p:inputText>
+	<br/><br/>
+	<h:outputLabel value="Data de Nascimento:"></h:outputLabel><br/>
+	<p:calendar id="dtanascimento" value="#{pacBean.paciente.data_nascimento}" locale="pt_BR" pattern="dd/MM/yyyy"></p:calendar>
+	<br/><br/>
+	<h:outputLabel value="Endereço:"></h:outputLabel><br/>
+	<p:inputText id="endereco" value="#{pacBean.paciente.endereco}"></p:inputText>
+	<br/><br/>
+	<h:outputLabel value="Telefone:"></h:outputLabel><br/>
+	<p:inputMask id="telefone" value="#{pacBean.paciente.telefone}" mask="(99) 9999-9999"></p:inputMask>
+	<br/><br/>
+	<h:outputLabel value="Cidade:"></h:outputLabel><br/>
+	<p:selectOneMenu id="selecionarCidade" value="#{pacBean.cidade_id}">
+	<f:selectItems value="#{pacBean.carregarCidades}"></f:selectItems>	
+	</p:selectOneMenu>
+	<br/><br/>
+	<h:outputLabel value="Estado:"></h:outputLabel><br/>
+	 	<p:selectOneMenu id="selecionarEstado" value="#{pacBean.estado_id}">
+	<f:selectItems value="#{pacBean.carregarEstados}"></f:selectItems>	
+	</p:selectOneMenu>
+	<br/><br/>
+	<p:commandButton value="Cadastrar" actionListener="#{pacBean.addPaciente}" ajax="false" action="listarPaciente?faces-redirect=true"></p:commandButton>
+	</h:form>
+	
+	</p:panel>
+</h:body>
+
+
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<h:head>
+	
+	</h:head>
+<h:body>
+<p:panel header="Cadastro de Items de Saude" footer="Desenvolvido por Elivan">
+<h:form>
+	<h:outputLabel value="Descrição do Item:"></h:outputLabel><br/>
+	<p:inputText id="descricao" value="#{itemsBean.itemsaude.descricao}"></p:inputText>
+	<br/><br/>
+	<h:outputLabel value="Tipo do Item:"></h:outputLabel><br/>
+	<p:inputText id="tipo" value="#{itemsBean.itemsaude.tipo}"></p:inputText>
+	<br/><br/>
+	<p:commandButton value="Cadastrar" actionListener="#{itemsBean.addItemSaude}" ajax="false" action="listarItemsaude?faces-redirect=true"></p:commandButton>
+	</h:form>
+	</p:panel>
+</h:body>
+
+
+</html>

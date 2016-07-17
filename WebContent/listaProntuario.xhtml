@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+</h:head>
+
+<h:body>
+<h:form>
+	<p:dataTable id="listagem_prontuario" value="#{ptoBean.prontuarios}" var="prontuario">
+	<p:column headerText="Id">
+        <h:outputText value="#{prontuario.id}" />
+    </p:column>
+    <p:column headerText="Data">
+        <h:outputText value="#{prontuario.datahora}" />
+    </p:column>
+    <p:column headerText="Paciente">
+        <h:outputText value="#{prontuario.paciente.nome}" />
+    </p:column>
+     <p:column headerText="anotações">
+        <h:outputText value="#{prontuario.observacao}" />
+    </p:column>
+       <p:column headerText="Editar">
+     <p:commandButton value="[EDITAR]" action="editarRegp" actionListener="#{ptoBean.selecionarProntuario}"></p:commandButton>
+    </p:column>
+    <p:column headerText="Apagar">
+     <p:commandButton value="[APAGAR]" actionListener="#{ptoBean.deleteProntuario}"  update="listagem_prontuario">
+     <p:confirm header="Execlusão de item" message="Deseja excluir o item?" icon="iu-icon-alert"></p:confirm>
+     </p:commandButton>
+    </p:column>
+   		</p:dataTable>
+   		
+   		<p:confirmDialog global="true" showEffect="fade" hideEffect="explode">
+   			<p:commandButton value="SIM" type="button" styleClass="ui-confirmdialog-yes" icon="iu-icon-check"></p:commandButton>
+   			<p:commandButton value="NÃO" type="button" styleClass="ui-confirmdialog-no" icon="iu-icon-close"></p:commandButton>
+   		</p:confirmDialog>
+   		
+   		<p:commandButton value="NOVO ITEM" actionListener="#{ptoBean.novoProntuario}" ajax="false" action="regProntuario?faces-redirect=true"></p:commandButton>
+</h:form>
+</h:body>
+</html>

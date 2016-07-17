@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="index.xhtml">
+    <ui:define name="source">
+	
+	<h:head>
+	
+	</h:head>
+<h:body>
+<p:panel header="Registro de Prontuário" footer="Desenvolvido por Elivan">
+<h:form>
+	<h:outputLabel value="Data do Registro:"></h:outputLabel><br/>
+	<p:calendar id="registro" value="#{ptoBean.prontuario.datahora}" mode="popup" showOn="button" popupIconOnly="true"></p:calendar>
+	<br/><br/>		
+	<h:outputLabel value="Nome do Paciente:"></h:outputLabel><br/>
+	 	<p:selectOneMenu id="selecionarPaciente" value="#{ptoBean.paciente_id}">
+	<f:selectItems value="#{ptoBean.carregarPaciente}"></f:selectItems>	
+	</p:selectOneMenu>
+	<br/><br/>
+	<h:outputLabel value="Consulta e Diagnostico:"></h:outputLabel><br/>
+	 	<p:selectOneMenu id="selecionarDiagnostico" value="#{ptoBean.diagnostico_id}">
+	<f:selectItems value="#{ptoBean.carregarDiagnostico}"></f:selectItems>	
+	</p:selectOneMenu>
+	<br/><br/>
+	<h:outputLabel value="Tratamento:"></h:outputLabel><br/>
+	 	<p:selectOneMenu id="selecionarTratamento" value="#{ptoBean.tratamento_id}">
+	<f:selectItems value="#{ptoBean.carregarTratamento}"></f:selectItems>	
+	</p:selectOneMenu>
+	<br/><br/>
+	<h:outputLabel value="Anotações:"></h:outputLabel><br/>
+	<p:editor id="anotacoes" value="#{ptoBean.prontuario.observacao}" width="600" ></p:editor>
+	<br/><br/>
+	<p:commandButton value="Cadastrar" actionListener="#{ptoBean.addProntuario}" ajax="false" action="listaProntuario?faces-redirect=true"></p:commandButton>
+	</h:form>
+	</p:panel>
+</h:body>
+ </ui:define>
+
+</ui:composition>

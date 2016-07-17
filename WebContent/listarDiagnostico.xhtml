@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+</h:head>
+
+<h:body>
+<h:form>
+	<p:dataTable id="listagem_diagnostico" value="#{diagBean.diagnosticos}" var="diagnostico">
+	<p:column headerText="Id">
+        <h:outputText value="#{diagnostico.id}" />
+    </p:column>
+    <p:column headerText="Descricão">
+        <h:outputText value="#{diagnostico.descricao}" />
+    </p:column>
+     <p:column headerText="Editar">
+     <p:commandButton value="[EDITAR]" action="editar" actionListener="#{diagBean.selecionarDiagnostico}"></p:commandButton>
+    </p:column>
+    <p:column headerText="Apagar">
+     <p:commandButton value="[APAGAR]" actionListener="#{diagBean.deleteDiagnostico}"  update="listagem_diagnostico">
+     <p:confirm header="Execlusão de item" message="Deseja excluir o item?" icon="iu-icon-alert"></p:confirm>
+     </p:commandButton>
+    </p:column>
+   		</p:dataTable>
+   		
+   		<p:confirmDialog global="true" showEffect="fade" hideEffect="explode">
+   			<p:commandButton value="SIM" type="button" styleClass="ui-confirmdialog-yes" icon="iu-icon-check"></p:commandButton>
+   			<p:commandButton value="NÃO" type="button" styleClass="ui-confirmdialog-no" icon="iu-icon-close"></p:commandButton>
+   		</p:confirmDialog>
+   		
+   		<p:commandButton value="NOVO ITEM" actionListener="#{diagBean.novoDiagnostico}" ajax="false" action="cadDiagnostico?faces-redirect=true"></p:commandButton>
+</h:form>
+</h:body>
+</html>

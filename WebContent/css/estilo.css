@@ -1,0 +1,24 @@
+ 
+
+
+.panel {
+	background-color:#CCCCCC; 
+	background-image: url('../img/logofisi.png');
+	background-repeat:no-repeat;
+	background-position:center;
+}
+
+.ptopo {
+	
+	text-align: center;
+	font-size:1.2em;
+	position:south;
+}
+
+.lunit .ui-layout-unit-content {
+	background-image: url('../img/logofisi.png');
+	background-repeat: repeat-x;
+	
+}
+ 
+

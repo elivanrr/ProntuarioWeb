@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+
+</h:head>
+<h:body>
+
+
+	<h:form>
+
+		<p:growl id="growl" sticky="true" showDetail="true" />
+
+		
+			<p:tab id="Paciente" title="Paciente">
+				<p:panel header="Cadastro de Paciente">
+					<p:messages />
+					<h:panelGrid columns="2" columnClasses="label, value">
+						<h:form>
+							<h:outputLabel value="Nome do Paciente:"></h:outputLabel>
+							<br />
+							<p:inputText id="nome" value="#{pacBean.paciente.nome}"></p:inputText>
+							<br />
+							<br />
+							<h:outputLabel value="Data de Nascimento:"></h:outputLabel>
+							<br />
+							<p:calendar id="dtanascimento"
+								value="#{pacBean.paciente.data_nascimento}" locale="pt_BR"
+								pattern="dd/MM/yyyy"></p:calendar>
+							<br />
+							<br />
+							<h:outputLabel value="Endereço:"></h:outputLabel>
+							<br />
+							<p:inputText id="endereco" value="#{pacBean.paciente.endereco}"></p:inputText>
+							<br />
+							<br />
+							<h:outputLabel value="Telefone:"></h:outputLabel>
+							<br />
+							<p:inputMask id="telefone" value="#{pacBean.paciente.telefone}"
+								mask="(99) 9999-9999"></p:inputMask>
+							<br />
+							<br />
+							<h:outputLabel value="Cidade:"></h:outputLabel>
+							<br />
+							<p:selectOneMenu id="selecionarCidade"
+								value="#{pacBean.cidade_id}">
+								<f:selectItems value="#{pacBean.carregarCidades}"></f:selectItems>
+							</p:selectOneMenu>
+							<br />
+							<br />
+							<h:outputLabel value="Estado:"></h:outputLabel>
+							<br />
+							<p:selectOneMenu id="selecionarEstado"
+								value="#{pacBean.estado_id}">
+								<f:selectItems value="#{pacBean.carregarEstados}"></f:selectItems>
+							</p:selectOneMenu>
+							<br />
+							<br />
+							<p:commandButton value="Cadastrar"
+								actionListener="#{pacBean.addPaciente}" ajax="false"
+								action="listarPaciente?faces-redirect=true"></p:commandButton>
+						</h:form>
+					</h:panelGrid>
+				</p:panel>
+			</p:tab>
+			
+			<p:tab id="ItemSaude" title=" Item de Saúde">
+				<p:panel header="Cadastro de item de saúde">
+					<p:messages />
+					<h:panelGrid columns="2" columnClasses="label, value">
+						<h:outputText value="Street: " />
+						<p:inputText value="#{userWizard.user.street}" />
+
+						<h:outputText value="Postal Code: " />
+						<p:inputText value="#{userWizard.user.postalCode}" />
+
+						<h:outputText value="City: " />
+						<p:inputText value="#{userWizard.user.city}" />
+
+						<h:outputText value="Skip to last: " />
+						<h:selectBooleanCheckbox value="#{userWizard.skip}" />
+					</h:panelGrid>
+				</p:panel>
+			</p:tab>
+
+			<p:tab id="contact" title="Contact">
+				<p:panel header="Contact Information">
+					<p:messages />
+					<h:panelGrid columns="2" columnClasses="label, value">
+						<h:outputText value="Email: *" />
+						<p:inputText value="#{userWizard.user.email}" required="true"
+							label="Email" />
+
+						<h:outputText value="Phone: " />
+						<p:inputText value="#{userWizard.user.phone}" />
+
+						<h:outputText value="Additional Info: " />
+						<p:inputText value="#{userWizard.user.info}" />
+					</h:panelGrid>
+				</p:panel>
+			</p:tab>
+
+			<p:tab id="confirm" title="Confirmation">
+				<p:panel header="Confirmation">
+					<h:panelGrid id="confirmation" columns="3"
+						columnClasses="grid,grid,grid">
+						<h:panelGrid columns="2" columnClasses="label, value">
+							<h:outputText value="Firstname: " />
+							<h:outputText value="#{userWizard.user.firstname}"
+								styleClass="outputLabel" />
+
+							<h:outputText value="Lastname: " />
+							<h:outputText value="#{userWizard.user.lastname}"
+								styleClass="outputLabel" />
+
+							<h:outputText value="Age: " />
+							<h:outputText value="#{userWizard.user.age}"
+								styleClass="outputLabel" />
+						</h:panelGrid>
+
+						<h:panelGrid columns="2" columnClasses="label, value">
+							<h:outputText value="Street: " />
+							<h:outputText value="#{userWizard.user.street}"
+								styleClass="outputLabel" />
+
+							<h:outputText value="Postal: " />
+							<h:outputText value="#{userWizard.user.postalCode}"
+								styleClass="outputLabel" />
+
+							<h:outputText value="City: " />
+							<h:outputText value="#{userWizard.user.city}"
+								styleClass="outputLabel" />
+						</h:panelGrid>
+
+						<h:panelGrid columns="2" columnClasses="label, value">
+							<h:outputText value="Email: " />
+							<h:outputText value="#{userWizard.user.email}"
+								styleClass="outputLabel" />
+
+							<h:outputText value="Phone " />
+							<h:outputText value="#{userWizard.user.phone}"
+								styleClass="outputLabel" />
+
+							<h:outputText value="Info: " />
+							<h:outputText value="#{userWizard.user.info}"
+								styleClass="outputLabel" />
+
+							<h:outputText />
+							<h:outputText />
+						</h:panelGrid>
+					</h:panelGrid>
+
+					<p:commandButton value="Submit" actionListener="#{userWizard.save}"
+						update="growl" process="@this" />
+				</p:panel>
+			</p:tab>
+
+	</h:form>
+
+</h:body>
+
+</html>

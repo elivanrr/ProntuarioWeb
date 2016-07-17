@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui" template="index.xhtml">
+	<ui:define name="source">
+		<h:head>
+ <title> Relatorio por paciente</title>
+ 
+ 
+ </h:head>
+ <h:body>
+ <p:panel header="Busca de paciente" style="width:400px">
+ <h:form>
+ <h:panelGrid columns="2">
+ <p:autoComplete value="#{relpacBean.paciente.nome}" completeMethod="#{cptBean.completaNome}"></p:autoComplete> 
+
+ <p:commandButton value="Emitir Prontuário" action="#{relpacBean.emitir}" ajax="false"></p:commandButton>
+ <h:outputText id="paciente" value="Selecionado:#{relpacBean.paciente.nome}"></h:outputText>
+ </h:panelGrid>
+ </h:form>
+ </p:panel>
+ </h:body>
+
+	</ui:define>
+
+</ui:composition>

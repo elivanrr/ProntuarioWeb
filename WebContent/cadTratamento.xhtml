@@ -1,0 +1,25 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="index.xhtml">
+    <ui:define name="source">
+    
+    <h:head>
+        <title>Layout-menu</title>
+        <link rel="StyleSheet" type="text/css" href="../css/estilo.css" ></link>
+    </h:head>
+    
+        <p:panel header="Cadastro De Tratamentos" styleClass="panel" style="width:1050px;height:500px;" >
+
+<h:form>
+	<h:outputLabel value="Descrição do Tratamento:"></h:outputLabel><br/>
+	<p:inputText id="descricao" value="#{tratBean.tratamento.descricao}"></p:inputText>
+	<br/><br/>
+	<p:commandButton value="Cadastrar" actionListener="#{tratBean.addTratamento}" ajax="false" action="listarTratamento?faces-redirect=true"></p:commandButton>
+	</h:form>
+	</p:panel>
+    </ui:define>
+
+</ui:composition>
