@@ -10,10 +10,10 @@
     <ui:define name="source">
 	
 	<h:head>
-	
+	<link rel="StyleSheet" type="text/css" href="../css/estilo.css" ></link>
 	</h:head>
-<h:body>
-<p:panel header="Registro de Prontuário" footer="Desenvolvido por Elivan">
+
+<p:panel header="Registro de Prontuário"  styleClass="panel" footer="Desenvolvido por Elivan">
 <h:form>
 	<h:outputLabel value="Data do Registro:"></h:outputLabel><br/>
 	<p:calendar id="registro" value="#{ptoBean.prontuario.datahora}" mode="popup" showOn="button" popupIconOnly="true"></p:calendar>
@@ -39,7 +39,7 @@
 	<p:commandButton value="Cadastrar" actionListener="#{ptoBean.addProntuario}" ajax="false" action="listaProntuario?faces-redirect=true"></p:commandButton>
 	</h:form>
 	</p:panel>
-</h:body>
+
  </ui:define>
 
 </ui:composition>

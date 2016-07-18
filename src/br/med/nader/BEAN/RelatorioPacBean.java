@@ -72,7 +72,7 @@ public class RelatorioPacBean {
 		try {
 
 				
-			String reportSource = "/home/elivan/Documentos/Desenvolvimento/JAVAJSF/workspace/ProntuarioWeb/WebContent/WEB-INF/report/relProntuarioPaciente.jasper";
+			String reportSource = "/home/elivan/git/ProntuarioWeb/WebContent/WEB-INF/report/relProntuarioPaciente.jasper";
 			Map<String, Object> params = new HashMap<String, Object>();
 			params.put("PacienteNome", this.paciente.getNome());
 			// Connection connection = (Connection) new

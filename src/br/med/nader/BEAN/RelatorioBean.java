@@ -32,7 +32,7 @@ public class RelatorioBean {
 		try {
 
 				
-			String reportSource = "/home/elivan/Documentos/Desenvolvimento/JAVAJSF/workspace/ProntuarioWeb/WebContent/WEB-INF/report/relProntuario.jasper";
+			String reportSource = "/home/elivan/git/ProntuarioWeb/WebContent/WEB-INF/report/relProntuario.jasper";
 			Map<String, Object> params = new HashMap<String, Object>();
 			// Connection connection = (Connection) new
 			// ConnectionFactory().getConnection();
