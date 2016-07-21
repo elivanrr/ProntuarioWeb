@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Layout-menu</title>
+	<link rel="StyleSheet" type="text/css" href="../css/estilo.css" ></link>
+
+
+</h:head>
+<h:body>
+	<p:panel header="PRONTUÁRIO WEB"  styleClass="ptopo"  ></p:panel> 
+	 
+	<p:layout>
+		<p:layoutUnit position="west" resizable="false" size="300" minSize="40"	>
+			<h:form>
+				<p:menu style="width:400px; height:500px;">
+					<p:submenu label="CADASTRO">
+						<p:menuitem value="Cadastro Paciente" outcome="cadPaciente"
+							icon="ui-icon-disk" />
+						<p:menuitem value="Cadastro Diagnóstico" outcome="cadDiagnostico"
+							icon="ui-icon-disk" />
+							<p:menuitem value="Cadastro Tratamento" outcome="cadTratamento"
+							icon="ui-icon-disk" />
+						<p:menuitem value="Gerar Prontuário" outcome="regProntuario"
+							icon="ui-icon-disk" />
+					</p:submenu>
+
+					<p:submenu label="LISTAGEM">
+						<p:menuitem value="Listagem dos Pacientes" outcome="listarPaciente"
+							icon="ui-icon-script" />
+						<p:menuitem value="Listagem dos Diagnósticos"
+							outcome="listarDiagnostico" icon="ui-icon-script" />
+						<p:menuitem value="Listagem dos Tratamentos"
+							outcome="listarTratamento" icon="ui-icon-script" />	
+						<p:menuitem value="Listagem dos Prontuários"
+							outcome="listaProntuario" icon="ui-icon-script" />
+
+					</p:submenu>
+
+					<p:submenu label="RELATÓRIOS">
+						<p:menuitem value="Relatório Geral de Prontuários" outcome="imprelPrto"
+							icon="ui-icon-document" />
+						<p:menuitem value="Prontuário por Paciente" outcome="imprelPacte"
+							icon="ui-icon-document" />
+		
+					</p:submenu>
+
+				</p:menu>
+			</h:form>
+		</p:layoutUnit>
+
+		<p:layoutUnit position="center" resizable="false" size="300" styleClass="lunit" >
+			<ui:insert name="source" />
+
+		</p:layoutUnit>
+	</p:layout>
+	
+	
+	
+</h:body>
+</html>

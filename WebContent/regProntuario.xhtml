@@ -6,14 +6,14 @@
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:p="http://primefaces.org/ui"
-                template="index.xhtml">
+               template="sistema.xhtml">
     <ui:define name="source">
 	
 	<h:head>
 	<link rel="StyleSheet" type="text/css" href="../css/estilo.css" ></link>
 	</h:head>
 
-<p:panel header="Registro de Prontuário"  styleClass="panel" footer="Desenvolvido por Elivan">
+<p:panel header="Registro de Prontuário"  styleClass="panel" footer="Desenvolvido por adp">
 <h:form>
 	<h:outputLabel value="Data do Registro:"></h:outputLabel><br/>
 	<p:calendar id="registro" value="#{ptoBean.prontuario.datahora}" mode="popup" showOn="button" popupIconOnly="true"></p:calendar>

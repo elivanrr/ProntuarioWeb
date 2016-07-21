@@ -12,54 +12,39 @@
 
 </h:head>
 <h:body>
-	<p:panel header="PRONTUÁRIO WEB"  styleClass="ptopo"  ></p:panel> 
-	 
-	<p:layout>
-		<p:layoutUnit position="west" resizable="false" size="300" minSize="40"	>
-			<h:form>
-				<p:menu style="width:400px; height:500px;">
-					<p:submenu label="CADASTRO">
-						<p:menuitem value="Cadastro Paciente" outcome="cadPaciente"
-							icon="ui-icon-disk" />
-						<p:menuitem value="Cadastro Diagnóstico" outcome="cadDiagnostico"
-							icon="ui-icon-disk" />
-							<p:menuitem value="Cadastro Tratamento" outcome="cadTratamento"
-							icon="ui-icon-disk" />
-						<p:menuitem value="Gerar Prontuário" outcome="regProntuario"
-							icon="ui-icon-disk" />
-					</p:submenu>
-
-					<p:submenu label="LISTAGEM">
-						<p:menuitem value="Listagem dos Pacientes" outcome="listarPaciente"
-							icon="ui-icon-script" />
-						<p:menuitem value="Listagem dos Diagnósticos"
-							outcome="listarDiagnostico" icon="ui-icon-script" />
-						<p:menuitem value="Listagem dos Tratamentos"
-							outcome="listarTratamento" icon="ui-icon-script" />	
-						<p:menuitem value="Listagem dos Prontuários"
-							outcome="listaProntuario" icon="ui-icon-script" />
-
-					</p:submenu>
-
-					<p:submenu label="RELATÓRIOS">
-						<p:menuitem value="Relatório Geral de Prontuários" outcome="imprelPrto"
-							icon="ui-icon-document" />
-						<p:menuitem value="Prontuário por Paciente" outcome="imprelPacte"
-							icon="ui-icon-document" />
-		
-					</p:submenu>
-
-				</p:menu>
-			</h:form>
-		</p:layoutUnit>
-
-		<p:layoutUnit position="center" resizable="false" size="300" styleClass="lunit" >
-			<ui:insert name="source" />
-
-		</p:layoutUnit>
-	</p:layout>
-	
-	
-	
+		<h:form>            
+    <h:outputLink value="javascript:void(0)" onclick="PF('dlg').show();" title="login">
+        <p:graphicImage name="../img/login.jpg" /> Área de acesso restrito, Por favor clique na imagen.
+    </h:outputLink>
+ 
+    <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+ 
+    <p:dialog header="Login" widgetVar="dlg" resizable="false">
+        <h:panelGrid columns="2" cellpadding="5">
+            <h:outputLabel for="username" value="Usuário:" />
+            <p:inputText id="username" value="#{userLoginView.username}" required="true" label="username" />
+ 
+            <h:outputLabel for="password" value="Senha:" />
+            <p:password id="password" value="#{userLoginView.password}" required="true" label="password" />
+ 
+            <f:facet name="footer">
+                <p:commandButton value="Acesso ao Sistema" update="growl" actionListener="#{userLoginView.login}"
+                                 oncomplete="handleLoginRequest(xhr, status, args)" />
+            </f:facet>  
+        </h:panelGrid>
+    </p:dialog>
+</h:form>
+ 
+<script type="text/javascript">
+    function handleLoginRequest(xhr, status, args) {
+        if(args.validationFailed || !args.loggedIn) {
+            PF('dlg').jq.effect("shake", {times:5}, 100);
+        }
+        else {
+            PF('dlg').hide();
+            $('#loginLink').fadeOut();
+        }
+    }
+</script>
 </h:body>
 </html>
